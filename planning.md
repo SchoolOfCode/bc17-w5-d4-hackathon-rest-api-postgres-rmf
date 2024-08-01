@@ -4,8 +4,8 @@ Planning
 // clone the repository ✅
 // install dependencies ✅
 // test if the server starts ✅
-// setup a README file with the instructionto run the app ✅
-// test the endponints with postman ✅
+// setup a README file with the instructions to run the app ✅
+// test the endpoints with postman ✅
 // import the helper function into app.js ✅
 
 // **setting up database**
@@ -23,10 +23,25 @@ Planning
 // send the response with the request status and the payload ✅
 
 // **writing the getHeroByid handler function**
-//
+// write the "getHeroesById" function to fetch and return the hero corrisponding to the request.params.id from the "heroes" table
+// try if the request is valid, else use catch to return an error
+// await the "getHeroesById" function result the be stored from the database into a variable
+// send the response with the request status and the payload
+
+// **writing the createHero handler function**
+// write the "createHero" function to add the hero object from the request.body to the "heroes" table
+// try if the request is valid, else use catch to return an error
+// await the "createHero" function to return and store the submited object into a variable
+// send the response with the request status and the payload
 
 // **writing the updateHeroById handler function**
-//
+// write the "updateHeroById" function to update the hero object corrisponding to the request.params.id from the "heroes" table
+// try if the request is valid, else use catch to return an error
+// await the "updateHeroById" function to return and store the updated object into a variable
+// send the response with the request status and the payload
 
 // **writing the deleteHeroById handler function**
-//
+// write the "deleteHeroById" function to delete the hero object corrisponding to the request.params.id from the "heroes" table
+// try if the request is valid, else use catch to return an error
+// await the "deleteHeroById" function to return and store the deleted object into a variable
+// send the response with the request status and the payload
