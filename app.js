@@ -49,10 +49,7 @@ app.delete("/hero/:id", async function (req, res) {});
 // Resource Two Route Handlers
 
 // Endpoint to retrieve all <resource_twos>
-app.get("/creator/", async function (req, res) {
-  const authors = await getAuthors();
-  res.status(200).json({ status: "success", data: authors });
-});
+app.get("/creator/", async function (req, res) {});
 
 // Endpoint to retrieve a <resource_twos> by id
 app.get("/creator/:id", async function (req, res) {});
