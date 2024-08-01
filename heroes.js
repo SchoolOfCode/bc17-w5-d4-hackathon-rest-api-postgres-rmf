@@ -1,8 +1,14 @@
 // Import the 'pool' object so our helper functions can interact with the PostgreSQL database
 import { pool } from "./db/index.js";
 
+// Query the database and return all heroes
 export async function getHeroes() {
-  // Query the database and return all heroes
+  // Define the SQL query to fetch all heroes from the 'heroes' table
+  const textQuery = `SELECT * FROM heroes`;
+  // Use the pool object to send the query to the database
+  const result = await pool.query(textQuery);
+  // return the result
+  return result;
 }
 
 export async function getHeroById(id) {

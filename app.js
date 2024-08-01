@@ -2,13 +2,13 @@
 import express from "express";
 
 // Import your helper functions for your first resource here
-// import {
-//   getResourceOne,
-//   getResourceOneById,
-//   createResourceOne,
-//   updateResourceOneById,
-//   deleteResourceOneById,
-// } from "./resource_one.js";
+import {
+  getHeroes,
+  // getResourceOneById,
+  // createResourceOne,
+  // updateResourceOneById,
+  // deleteResourceOneById,
+} from "./heroes.js";
 
 // Import your helper functions for your second resource here
 // import {
@@ -29,9 +29,13 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
 // Resource One Route Handlers
 
 // Endpoint to retrieve all <resource_one>
-app.get("/heros/", async function (req, res) {
-  console.log("I'm alive");
-  res.status(200).send("I'm alive!");
+app.get("/heroes/", async function (req, res) {
+  try {
+    const result = await getHeroes();
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
 // Endpoint to retrieve a <resource_one> by id
