@@ -4,7 +4,7 @@ import express from "express";
 // Import your helper functions for your first resource here
 import {
   getHeroes,
-  // getResourceOneById,
+  getHeroById,
   // createResourceOne,
   // updateResourceOneById,
   // deleteResourceOneById,
@@ -32,14 +32,23 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
 app.get("/heroes/", async function (req, res) {
   try {
     const result = await getHeroes();
-    res.status(200).json(result);
+    res.status(200).json({ status: true, payload: result });
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({ status: false, error: error });
   }
 });
 
 // Endpoint to retrieve a <resource_one> by id
-app.get("/hero/:id", async function (req, res) {});
+app.get("/hero/:id", async function (req, res) {
+  const data = req.params.id;
+  console.log(data);
+  try {
+    const result = await getHeroById(data);
+    res.status(200).json({ status: true, payload: result });
+  } catch (error) {
+    res.status(400).send({ status: false, error: error });
+  }
+});
 
 // Endpoint to create a new <resource_one>
 app.post("/hero/", async function (req, res) {});

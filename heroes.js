@@ -11,18 +11,21 @@ export async function getHeroes() {
   return result;
 }
 
+// Query the database and return the hero with a matching id or null
 export async function getHeroById(id) {
-  // Query the database and return the hero with a matching id or null
+  // Define the SQL query to fetch heroe corrisponding to the request.params.id from 'heroes' table
+  const textQuery = `SELECT * FROM heroes WHERE id = $1`;
+  // Use the pool object to send the query to the database
+  const result = await pool.query(textQuery, [id]);
+  // return the result or null
+  return result.rows[0] || null;
 }
 
-export async function createHero(resource) {
-  // Query the database to create an hero and return the newly created hero
-}
+// Query the database to create an hero and return the newly created hero
+export async function createHero(resource) {}
 
-export async function updateHeroById(id, updates) {
-  // Query the database to update the hero and return the newly updated hero or null
-}
+// Query the database to update the hero and return the newly updated hero or null
+export async function updateHeroById(id, updates) {}
 
-export async function deleteHeroById(id) {
-  // Query the database to delete the resource and return the deleted resource or null
-}
+// Query the database to delete the resource and return the deleted resource or null
+export async function deleteHeroById(id) {}
