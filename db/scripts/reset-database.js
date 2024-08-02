@@ -15,9 +15,9 @@ async function resetDatabase() {
     // Create the heroes table
     await pool.query(`     
     CREATE TABLE heroes (
-      id INT PRIMARY KEY,      -- Primary key for the heroes
-      hero_name VARCHAR(50),   -- Name of the hero
-      real_name VARCHAR(50),   -- Real name of the hero
+      id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,      -- Primary key for the heroes
+      hero_name VARCHAR(50) NOT NULL,   -- Name of the hero
+      real_name VARCHAR(50) NOT NULL,   -- Real name of the hero
       first_appearance DATE    -- Date of the hero's first appearance
     );
    `);
@@ -25,9 +25,9 @@ async function resetDatabase() {
     // Create the superpowers table with a foreign key referencing heroes
     await pool.query(`
        CREATE TABLE superpowers (
-        id INT PRIMARY KEY,       -- Primary key for the superpowers
+        id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,       -- Primary key for the superpowers
         hero_id INT,              -- Foreign key referencing heroes
-        superpower VARCHAR(100),  -- Description of the superpower
+        superpower VARCHAR(100) NOT NULL,  -- Description of the superpower
         FOREIGN KEY (hero_id) REFERENCES heroes(id)  -- Foreign key constraint
     );
     `);
