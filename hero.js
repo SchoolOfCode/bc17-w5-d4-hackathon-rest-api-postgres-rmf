@@ -14,8 +14,12 @@ export async function getHeroes() {
 // Query the database and return the hero with a matching id or null
 export async function getHeroById(id) {
   // Define the SQL query to fetch hero corrisponding to the request.params.id from 'heroes' table
+  const text= "SELECT * FROM heroes WHERE id = $1"
+  const result = await pool.query(text,[id])
   // Use the pool object to send the query to the database
   // return the result or null
+  return result
+
 }
 
 // Query the database to create an hero and return the newly created hero
