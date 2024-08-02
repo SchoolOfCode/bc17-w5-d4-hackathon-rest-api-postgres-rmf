@@ -1,12 +1,12 @@
-Planning
-**setting up project**
-understanding the brief
-clone the repository
-install dependencies
-test if the server starts
-setup a README file with the instructions to run the app
-test the endpoints with postman
-import the helper function into app.js
+- Planning
+  **setting up project**
+  understanding the brief
+  clone the repository
+  install dependencies
+  test if the server starts
+  setup a README file with the instructions to run the app
+  test the endpoints with postman
+  import the helper function into app.js
 
 **setting up database**
 create a database from the render website
