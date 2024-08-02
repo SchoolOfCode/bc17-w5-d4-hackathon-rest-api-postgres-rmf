@@ -22,18 +22,6 @@ async function resetDatabase() {
     );
    `);
 
-    // Create the creators table with a foreign key referencing heroes
-    await pool.query(`
-    CREATE TABLE creators (
-      id INT PRIMARY KEY,        -- Primary key for the creators
-      creator_name VARCHAR(100), -- Name of the creator
-      date_of_release DATE,      -- Date of release for their works
-      comics_produced INT,       -- Number of comics produced
-      hero_id INT,               -- Foreign key referencing heroes
-      FOREIGN KEY (hero_id) REFERENCES heroes(id)  -- Foreign key constraint
-    );
-   `);
-
     // Create the superpowers table with a foreign key referencing heroes
     await pool.query(`
        CREATE TABLE superpowers (
@@ -51,15 +39,6 @@ async function resetDatabase() {
       (1, 'Spider-Man', 'Peter Parker', '1962-08-01'),
       (2, 'Iron Man', 'Tony Stark', '1963-03-01'),
       (3, 'Captain America', 'Steve Rogers', '1941-03-01');
-    `);
-
-    // Insert data into creators with references to heroes
-    await pool.query(`
-      INSERT INTO creators (id, creator_name, date_of_release, comics_produced, hero_id)
-      VALUES
-      (1, 'Stan Lee and Steve Ditko', '1962-08-01', 38, 1),
-      (2, 'Stan Lee, Larry Lieber, Don Heck, and Jack Kirby', '1963-03-01', 250, 2),
-      (3, 'Joe Simon and Jack Kirby', '1941-03-01', 75, 3);
     `);
 
     // Insert data into superpowers with references to heroes
