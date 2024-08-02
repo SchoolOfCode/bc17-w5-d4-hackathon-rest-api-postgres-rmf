@@ -18,11 +18,11 @@
 --run “npm run reset-database” to upload the data to the render database
 
 **writing the getHeroes handler function**
-write the "getHeroes" function to fetch and return all the heroes from the "heroes" table
-try if the request is valid, else use catch to return an error
-await the "getHeroes" function result the be stored from the database into a variable
-send the response with the request status and the payload
-Test --pass
+--write the "getHeroes" function to fetch and return all the heroes from the "heroes" table
+--try if the request is valid, else use catch to return an error
+--await the "getHeroes" function result the be stored from the database into a variable
+--send the response with the request status and the payload
+--Test --pass
 
 **writing the getHeroByid handler function**
 write the "getHeroesById" function to fetch and return the hero corrisponding request.params.id from the "heroes" table
