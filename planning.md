@@ -24,7 +24,7 @@ Planning
 // Test --pass ✅
 
 // **writing the getHeroByid handler function**
-// write the "getHeroesById" function to fetch and return the hero corrisponding to the request.params.id from the "heroes" table ✅
+// write the "getHeroesById" function to fetch and return the hero corrisponding request.params.id from the "heroes" table ✅
 // try if the request is valid, else use catch to return an error ✅
 // await the "getHeroesById" function result the be stored from the database into a variable ✅
 // send the response with the request status and the payload ✅
