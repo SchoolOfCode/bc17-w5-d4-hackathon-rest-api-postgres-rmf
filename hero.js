@@ -3,9 +3,12 @@ import { pool } from "./db/index.js";
 
 // Query the database and return all heroes
 export async function getHeroes() {
-  // Define the SQL query to fetch all heroes from the 'heroes' table
+  // Define the SQL query to fetch all heroes from the 'heroes' table  
+  const text = "SELECT * FROM heroes";
+  const result = pool.query(text)
   // Use the pool object to send the query to the database
   // return the result
+  return result
 }
 
 // Query the database and return the hero with a matching id or null
