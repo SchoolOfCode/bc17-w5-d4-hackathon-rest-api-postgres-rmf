@@ -13,7 +13,7 @@ export async function getHeroes() {
 
 // Query the database and return the hero with a matching id or null
 export async function getHeroById(id) {
-  // Define the SQL query to fetch heroe corrisponding to the request.params.id from 'heroes' table
+  // Define the SQL query to fetch hero corrisponding to the request.params.id from 'heroes' table
   const textQuery = `SELECT * FROM heroes WHERE id = $1`;
   // Use the pool object to send the query to the database
   const result = await pool.query(textQuery, [id]);
@@ -22,10 +22,31 @@ export async function getHeroById(id) {
 }
 
 // Query the database to create an hero and return the newly created hero
-export async function createHero(resource) {}
+export async function createHero(resource) {
+  // Define the SQL query to fetch an hero corrisponding to the request.dody and add it to 'heroes' table
+  const textQuery = ``;
+  // Use the pool object to send the query to the database
+  const result = await pool.query(textQuery, [resources]);
+  // return the result or null
+  return result.rows[0] || null;
+}
 
 // Query the database to update the hero and return the newly updated hero or null
-export async function updateHeroById(id, updates) {}
+export async function updateHeroById(id, updates) {
+  // Define the SQL query to fetch an hero corrisponding to the request.params.id and update it to 'heroes' table
+  const textQuery = ``;
+  // Use the pool object to send the query to the database
+  const result = await pool.query(textQuery, [id, updates]);
+  // return the result or null
+  return result.rows[0] || null;
+}
 
 // Query the database to delete the resource and return the deleted resource or null
-export async function deleteHeroById(id) {}
+export async function deleteHeroById(id) {
+  // Define the SQL query to fetch an hero corrisponding to the request.params.id and delete it from 'heroes' table
+  const textQuery = ``;
+  // Use the pool object to send the query to the database
+  const result = await pool.query(textQuery, [id, updates]);
+  // return the result or null
+  return result.rows[0] || null;
+}

@@ -5,9 +5,9 @@ import express from "express";
 import {
   getHeroes,
   getHeroById,
-  // createResourceOne,
-  // updateResourceOneById,
-  // deleteResourceOneById,
+  createHero,
+  updateHeroById,
+  deleteHeroOneById,
 } from "./heroes.js";
 
 // Import your helper functions for your second resource here
@@ -50,7 +50,10 @@ app.get("/hero/:id", async function (req, res) {
 });
 
 // Endpoint to create a new <resource_one>
-app.post("/hero/", async function (req, res) {});
+app.post("/hero/", async function (req, res) {
+  const data = request.body;
+  const result = await createHero(data);
+});
 
 // Endpoint to update a specific <resource_one> by id
 app.patch("/hero:id", async function (req, res) {});
