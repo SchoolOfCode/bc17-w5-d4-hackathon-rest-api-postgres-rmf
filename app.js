@@ -54,13 +54,7 @@ app.get("/hero/:id", async function (req, res) {
 // Endpoint to create a new <hero>
 app.post("/hero/", async function (req, res) {
   const data = req.body;
-  console.log("from postman", data);
-  res.json(data);
-  const result = await createHero(
-    data.hero_name,
-    data.real_name,
-    data.first_appearance
-  );
+  const result = await createHero(data);
   res.status(200).json({ status: "success", data: result });
 });
 
