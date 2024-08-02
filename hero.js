@@ -18,8 +18,7 @@ export async function getHeroById(id) {
   const result = await pool.query(text,[id])
   // Use the pool object to send the query to the database
   // return the result or null
-  return result
-
+  return result.rows[0] || null
 }
 
 // Query the database to create an hero and return the newly created hero
