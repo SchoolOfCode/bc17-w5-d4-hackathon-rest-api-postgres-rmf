@@ -15,45 +15,45 @@ async function resetDatabase() {
     // Create the heroes table
     await pool.query(`     
     CREATE TABLE heroes (
-      id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,      -- Primary key for the heroes
-      hero_name VARCHAR(50) NOT NULL,   -- Name of the hero
-      real_name VARCHAR(50) NOT NULL,   -- Real name of the hero
-      first_appearance DATE    -- Date of the hero's first appearance
+      id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,  -- Auto-incrementing column
+      hero_name VARCHAR(50) NOT NULL,   
+      real_name VARCHAR(50) NOT NULL,  
+      first_appearance DATE    
     );
    `);
 
     // Create the superpowers table with a foreign key referencing heroes
     await pool.query(`
        CREATE TABLE superpowers (
-        id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,       -- Primary key for the superpowers
+        id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,  -- Auto-incrementing column
         hero_id INT,              -- Foreign key referencing heroes
-        superpower VARCHAR(100) NOT NULL,  -- Description of the superpower
+        superpower VARCHAR(100) NOT NULL ,  -- Description of the superpower
         FOREIGN KEY (hero_id) REFERENCES heroes(id)  -- Foreign key constraint
     );
     `);
 
     // Insert data into heroes
     await pool.query(`
-      INSERT INTO heroes (id, hero_name, real_name, first_appearance)
+      INSERT INTO heroes (hero_name, real_name, first_appearance)
       VALUES
-      (1, 'Spider-Man', 'Peter Parker', '1962-08-01'),
-      (2, 'Iron Man', 'Tony Stark', '1963-03-01'),
-      (3, 'Captain America', 'Steve Rogers', '1941-03-01');
+        ('Spider-Man', 'Peter Parker', '1962-08-01'),
+        ('Iron Man', 'Tony Stark', '1963-03-01'),
+        ('Captain America', 'Steve Rogers', '1941-03-01');
     `);
 
     // Insert data into superpowers with references to heroes
     await pool.query(`
       INSERT INTO superpowers (id, hero_id, superpower)
       VALUES
-      (1, 1, 'Superhuman strength'),
-      (2, 1, 'Superhuman agility and reflexes'),
-      (3, 1, 'Spider-sense (danger detection)'),
-      (4, 2, 'Powered armor suit providing superhuman strength'),
-      (5, 2, 'Flight capability via his suit'),
-      (6, 2, 'Advanced weaponry integrated into his suit'),
-      (7, 3, 'Enhanced strength'),
-      (8, 3, 'Enhanced agility and endurance'),
-      (9, 3, 'Mastery in using his nearly indestructible shield');
+      (1, 'Superhuman strength'),
+      (1, 'Superhuman agility and reflexes'),
+      (1, 'Spider-sense (danger detection)'),
+      (2, 'Powered armor suit providing superhuman strength'),
+      (2, 'Flight capability via his suit'),
+      (2, 'Advanced weaponry integrated into his suit'),
+      (3, 'Enhanced strength'),
+      (3, 'Enhanced agility and endurance'),
+      (3, 'Mastery in using his nearly indestructible shield');
     `);
 
     console.log("Database reset successful");

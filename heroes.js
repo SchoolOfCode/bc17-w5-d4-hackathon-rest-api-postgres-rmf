@@ -23,11 +23,10 @@ export async function getHeroById(id) {
 
 export async function createHero(hero) {
   const text = `
-  INSERT INTO heroes
-  VALUES ($1, $2, $3, $4)
+  INSERT INTO heroes (hero_name, real_name, first_appearance)
+  VALUES ($1, $2, $3)
   RETURNING *;`;
   const result = await pool.query(text, [
-    await idGenerator(),
     hero.hero_name,
     hero.real_name,
     hero.first_appearance,
