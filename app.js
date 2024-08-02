@@ -3,11 +3,11 @@ import express from "express";
 
 // Import your helper functions for your first resource here
 import {
-  getHeroes,
+  getHero,
   getHeroById,
   createHero,
   updateHeroById,
-  deleteHeroOneById,
+  deleteHeroById,
 } from "./heroes.js";
 
 // Import your helper functions for your second resource here
@@ -29,9 +29,9 @@ app.use(express.json()); // express.json() middleware is used to parse incoming 
 // Resource One Route Handlers
 
 // Endpoint to retrieve all <resource_one>
-app.get("/heroes/", async function (req, res) {
+app.get("/hero/", async function (req, res) {
   try {
-    const result = await getHeroes();
+    const result = await getHero();
     res.status(200).json({ status: true, payload: result });
   } catch (error) {
     res.status(400).send({ status: false, error: error });
@@ -54,29 +54,6 @@ app.post("/hero/", async function (req, res) {
   const data = request.body;
   const result = await createHero(data);
 });
-
-// Endpoint to update a specific <resource_one> by id
-app.patch("/hero:id", async function (req, res) {});
-
-// Endpoint to delete a specific <resource_one> by id
-app.delete("/hero/:id", async function (req, res) {});
-
-// Resource Two Route Handlers
-
-// Endpoint to retrieve all <resource_twos>
-app.get("/creator/", async function (req, res) {});
-
-// Endpoint to retrieve a <resource_twos> by id
-app.get("/creator/:id", async function (req, res) {});
-
-// Endpoint to create a new <resource_twos>
-app.post("/creator/", async function (req, res) {});
-
-// Endpoint to update a specific <resource_twos> by id
-app.patch("/creator/:id", async function (req, res) {});
-
-// Endpoint to delete a specific <resource_twos> by id
-app.delete("/creator/:id", async function (req, res) {});
 
 // Start the server and listen on the specified port
 app.listen(PORT, function () {

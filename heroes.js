@@ -2,7 +2,7 @@
 import { pool } from "./db/index.js";
 
 // Query the database and return all heroes
-export async function getHeroes() {
+export async function getHero() {
   // Define the SQL query to fetch all heroes from the 'heroes' table
   const textQuery = `SELECT * FROM heroes`;
   // Use the pool object to send the query to the database
