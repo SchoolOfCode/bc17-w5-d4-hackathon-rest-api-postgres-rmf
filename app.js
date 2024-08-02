@@ -5,7 +5,7 @@ import express from "express";
 import {
 getHeroes,
 getHeroById,
-//   createResourceOne,
+createHero,
 //   updateResourceOneById,
 //   deleteResourceOneById,
 } from "./hero.js";
@@ -35,7 +35,7 @@ try {
   res.status (200).json({status: true, data: result})
 }
   catch (error) {
-  res.status (400).json({status: false, data: error})
+  res.status (404).json({status: 'Error: 404. Heros not found', data: error})
   }
 });
 
@@ -47,14 +47,23 @@ app.get("/hero/:id", async function (req, res) {
   const result = await getHeroById(data)
   res.status (200).json ({status: 'success', data: result})
   } catch (error){
-    res.status (400).json({status: 'Id not found', data: error})
+    res.status (404).json({status: 'Error: 404. Id not found', data: error})
   }
 })
 
+// Endpoint to create a new <hero>
+app.post("/hero/", async function (req, res) {
+    const data = req.body;
+    console.log(data)    
+    res.json(data)    
+    const result = await createHero(data.hero_name, data.real_name, data.first_appearance)
+    res.status (200).json ({status: 'success', data: result})
 
-// Endpoint to create a new <resource_one>
-app.post("/hero/", async function (req, res) {});
 
+    //await createHero(body)
+
+});
+ 
 // Endpoint to update a specific <resource_one> by id
 app.patch("/hero/:id", async function (req, res) {});
 

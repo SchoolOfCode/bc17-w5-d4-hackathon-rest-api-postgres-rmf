@@ -22,8 +22,16 @@ export async function getHeroById(id) {
 }
 
 // Query the database to create an hero and return the newly created hero
-export async function createHero(resource) {
+export async function createHero(hero_name, real_name, first_appearance) {
   // Define the SQL query to fetch an hero corrisponding to the request.dody and add it to 'heroes' table
+  const text = `INSERT INTO heroes (hero_name, real_name, first_appearance)
+                VALUES ($1, $2, $3) RETURNING *`
+                [hero_name, real_name, first_appearance];
+  const result = await pool.query(text);
+  console.log(result)
+  return result.rows || null
+
+
   // Use the pool object to send the query to the database
   // return the result or null
 }
